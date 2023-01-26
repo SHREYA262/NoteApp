@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CreateNotesActivity">
+    tools:context=".CreateNotesActivity2">
 
     <TextView
         android:id="@+id/textView1"
@@ -14,7 +14,7 @@
         android:layout_marginTop="72dp"
         android:layout_marginEnd="138dp"
         android:text="Take down notes"
-        android:textColor="@color/darkGreen"
+        android:textColor="@color/dullYellow"
         android:textSize="32dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -63,7 +63,7 @@
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
         android:layout_marginTop="20dp"
-        android:background="@color/lightgreen"
+        android:background="@color/lightYellow"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Topic" />
@@ -75,26 +75,26 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="30dp"
-        android:background="@color/lightgreen"
+        android:background="@color/lightYellow"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/details" />
 
     <TextView
-        android:id="@+id/save_btn"
+        android:id="@+id/save_btn2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="174dp"
         android:layout_marginTop="79dp"
         android:layout_marginEnd="173dp"
-        android:background="@color/darkGreen"
+        android:background="@color/dullYellow"
         android:gravity="center"
         android:padding="4dp"
         android:paddingStart="28dp"
         android:paddingEnd="28dp"
         android:text="Save"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="22sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"

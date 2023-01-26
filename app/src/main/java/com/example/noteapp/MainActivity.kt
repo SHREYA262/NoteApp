@@ -13,71 +13,52 @@ import com.google.firebase.database.*
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var dbrf : DatabaseReference
+    private lateinit var dbrf: DatabaseReference
     private lateinit var recyclerView: RecyclerView
     private lateinit var noteArrayList: ArrayList<noteData>
-    private lateinit var note_list: DatabaseReference
-    private lateinit var mAuth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val composeNote= findViewById<FloatingActionButton>(R.id.compose_note)
+        val composeNote = findViewById<FloatingActionButton>(R.id.compose_note)
         composeNote.setOnClickListener {
-
             val intent = Intent(this@MainActivity, CreateNotesActivity::class.java)
             startActivity(intent)
         }
 
-        mAuth = FirebaseAuth.getInstance()
-        val currentUser = mAuth.currentUser
-
-
-
-        supportActionBar?.hide()
-
-        recyclerView= findViewById<RecyclerView>(R.id.recyclerview)
-        recyclerView.layoutManager= LinearLayoutManager(this)
+        recyclerView = findViewById(R.id.recyclerview)
+        recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.setHasFixedSize(true)
         recyclerView.setHasFixedSize(true)
-
-
 
         noteArrayList = arrayListOf<noteData>()
-        getUserData()
+
+        getNotesData()
 
         dbrf = FirebaseDatabase.getInstance().getReference("Notes")
     }
 
-    private fun getUserData() {
-
-
+    private fun getNotesData() {
         dbrf = FirebaseDatabase.getInstance().getReference("Notes")
         dbrf.addValueEventListener(object : ValueEventListener {
 
             override fun onDataChange(snapshot: DataSnapshot) {
-
-                if (snapshot.exists()){
-
-                    for (userSnapshot in snapshot.children){
-
+                if (snapshot.exists()) {
+                    for (userSnapshot in snapshot.children) {
                         val detail = userSnapshot.getValue(noteData::class.java)
                         noteArrayList.add(detail!!)
-
-
-
-                    recyclerView.adapter = AdapterNote(noteArrayList)
+//                        recyclerView.adapter = AdapterNote(noteArrayList)
+                    }
+                    val adapter = AdapterNote(noteArrayList)
+                    recyclerView.adapter = adapter
+                    adapter.notifyDataSetChanged()
                 }
-            }
-
             }
 
             override fun onCancelled(error: DatabaseError) {
                 TODO("Not yet implemented")
             }
         })
-
     }
-
 }
